@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block title %}
+    Login
+{% endblock %}
+{% block content %}
+
+<div class="card mx-auto mt-5" style="width: 30rem;">
+    <div class="card-body">
+      <h3 class="card-title">Login</h3>
+      <div>{% for message in messages %}
+        <div class="alert {{ message.tags }} mx-auto">{{ message }}</div> 
+        {% endfor %}  </div>
+    <div class="mb-3">
+        <form action="{% url 'login' %}" method="post">{% csrf_token %}
+      <label for="username" class="form-label">Username</label>
+      <input type="text" name="username" id="username" class="form-control" placeholder="" aria-describedby="helpId" title_text="Username is required" required>
+    </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="" required>
+      </div>
+      <div >
+        <button type="submit" class="btn btn-success">Login</button>
+      </div>
+     
+    </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block title %}
+    Register
+{% endblock %}
+{% block content %}
+
+
+<div class="card mx-auto mt-5" style="width: 30rem;">
+    <div class="card-body">
+      <h3 class="card-title">Register</h3>
+      <div>{% for message in messages %}
+        <div class="alert {{ message.tags }} mx-auto">{{ message }}</div> 
+        {% endfor %}  </div>
+    <div class="mb-3">
+        <form action="{% url 'register' %}" method="post">{% csrf_token %}
+      <label for="username" class="form-label">Username</label>
+      <input type="text" name="username" id="username" class="form-control" placeholder="" aria-describedby="helpId" required>
+    </div>
+      <div class="mb-3">
+        <label for="email" class="form-label ">Email</label>
+        <input type="email" class="form-control" name="emailaddress" id="emailaddress" aria-describedby="emailHelpId" placeholder="" required>
+      </div>
+      <div class="mb-3">
+        <label for="firstname" class="form-label">First Name</label>
+        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="" aria-describedby="helpId" required>
+      </div>
+      <div class="mb-3">
+        <label for="lastname" class="form-label">Last Name</label>
+        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="" aria-describedby="helpId" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="" required>
+      </div>
+      <div class="mb-3">
+        <label for="cpassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="" required>
+      </div>
+      <div >
+        <button type="submit" class="btn btn-success">Register</button>
+      </div>
+     
+    </form>
+    </div>
+  </div>
+
+{% endblock %}
